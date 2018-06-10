@@ -1,0 +1,33 @@
+set default-bg                  "#1B182C"
+set default-fg                  "#CBE3E7"
+
+set statusbar-fg                "#CBE3E7"
+set statusbar-bg                "#100E23"
+
+set inputbar-bg                 "#565575"
+set inputbar-fg                 "#CBE3E7"
+
+set notification-error-bg       "#FF5458"
+set notification-error-fg       "#1B182C"
+
+set notification-warning-bg     "#FF5458"
+set notification-warning-fg     "#1B182C"
+
+set highlight-color             "#FFE9AA"
+set highlight-active-color      "#91DDFF"
+
+set completion-highlight-fg     "#565575"
+set completion-highlight-bg     "#63F2F1"
+
+set completion-bg               "#565575"
+set completion-fg               "#63F2F1"
+
+set notification-bg             "#95FFA4"
+set notification-fg             "#100E23"
+
+set font "monospace normal 12"
+
+# copy selection to system clipboard
+set selection-clipboard clipboard
+
+set incremental-search true

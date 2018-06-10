@@ -1,0 +1,23 @@
+[user]
+	name = lamcw
+	email = thomas@lamcw.com
+	signingkey = thomas@lamcw.com
+[credential]
+	helper = store
+[alias]
+	# git log graph
+	gr = log --graph --full-history --all --color --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m"
+[core]
+	excludesfile = ~/.gitignore_global
+[merge]
+	tool = vimdiff
+[mergetool]
+	prompt = true
+[mergetool "vimdiff"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[difftool]
+	prompt = false
+[diff]
+	tool = vimdiff
+[commit]
+	gpgsign = true
