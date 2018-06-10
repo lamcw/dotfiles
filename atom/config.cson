@@ -1,0 +1,68 @@
+"*":
+  "atom-beautify":
+    general:
+      beautifyEntireFileOnSave: false
+    js:
+      indent_with_tabs: true
+      keep_function_indentation: true
+    json:
+      indent_with_tabs: true
+  "atom-ide-ui":
+    "atom-ide-diagnostics-ui":
+      showDiagnosticTraces: true
+  core:
+    autoHideMenuBar: true
+    closeDeletedFileTabs: true
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".hgrc"
+        ".flowconfig"
+      ]
+      "source.json": [
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
+    telemetryConsent: "no"
+  editor:
+    fontFamily: "Inconsolata-g for Powerline"
+    fontSize: 12
+    invisibles: {}
+    softTabs: false
+  "exception-reporting":
+    userId: "23b7f319-91c1-4fb5-afd6-78a304bf49b6"
+  "file-icons":
+    coloured: false
+  "ide-python": {}
+  "language-babel":
+    autoIndentJSX: true
+  "markdown-preview": {}
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  "vim-mode-plus":
+    notifiedCoffeeScriptNoLongerSupportedToExtendVMP: true
+  welcome:
+    showOnStartup: false
+".c.source":
+  editor:
+    tabLength: 8
+".cpp.source":
+  editor:
+    tabLength: 8
+".generic-config.jinja.text":
+  editor:
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: false
+".jinja.python.source":
+  editor:
+    tabLength: 4
+".js.jsx.source":
+  editor:
+    showIndentGuide: true
+    showInvisibles: true
+".source.sql":
+  editor:
+    showInvisibles: false

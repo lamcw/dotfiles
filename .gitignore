@@ -1,0 +1,9 @@
+nvim/plugged
+
+zsh/.zcompdump*
+zsh/oh-my-zsh
+zsh/.histfile
+
+nvim/.netrwhist
+
+git/.git-credentials
