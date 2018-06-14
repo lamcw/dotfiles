@@ -42,13 +42,11 @@ compctl -K _pip_completion pip
 # for pip3
 compctl -K _pip_completion pip3
 
-local plugins=(git \
-	archlinux \
-	sudo \
+local plugins=(archlinux \
 	colored-man-pages \
-	history \
 	common-aliases \
-	fast-syntax-highlighting
+	fast-syntax-highlighting \
+	git
 )
 
 # source all plugins
@@ -57,8 +55,6 @@ foreach file (`echo $plugins`)
 		source $ZDOTDIR/plugins/$file/$file.plugin.zsh
 	fi
 end
-
-fpath+=($ZDOTDIR/plugins/fast-syntax-highlighting)
 
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/keybindings.zsh
