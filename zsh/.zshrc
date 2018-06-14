@@ -31,7 +31,7 @@ compctl -K _pip_completion pip
 # for pip3
 compctl -K _pip_completion pip3
 
-local plugins=(archlinux \
+plugins=(archlinux \
 	colored-man-pages \
 	common-aliases \
 	fast-syntax-highlighting \
