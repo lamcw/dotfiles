@@ -2,8 +2,7 @@ export DOTFILES=$HOME/.dotfiles
 # override default zsh startup files directory
 export ZDOTDIR=$DOTFILES/zsh
 
-# export GDK_BACKEND=wayland
-# export CLUTTER_BACKEND=wayland
+export LANG="en_US.utf8"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -11,8 +10,5 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-
-# fix blank window in Java application
-export _JAVA_AWT_WM_NONREPARENTING=1
 
 export GPG_TTY=$(tty)

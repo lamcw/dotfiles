@@ -17,12 +17,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'NLKNguyen/c-syntax.vim', { 'for': 'c' }
 
 Plug 'w0rp/ale', { 'on': [] }
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-clangx', { 'for': ['c', 'cpp'] }
+Plug 'Shoygo/deoplete-jedi', { 'for': 'python' }
 Plug 'Shougo/neoinclude.vim', { 'for': ['c', 'cpp'] }
 
 " Tags
@@ -33,8 +30,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary', { 'on': [] }
 Plug 'airblade/vim-gitgutter'
-Plug '/usr/share/vim/vimfiles/', { 'as': 'fzf' }
-Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -164,18 +159,6 @@ set tags=.tags;
 
 nmap <F8> :TagbarToggle<CR>
 " }}}
-" LanguageClient {{{
-let g:LanguageClient_serverCommands = {
-			\ 'python': ['pyls'],
-			\ }
-let g:LanguageClient_settingsPath = "$DOTFILES/nvim/settings.json"
-nnoremap <silent> <Leader>h :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> <Leader>R :call LanguageClient_textDocument_rename()<CR>
-nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>
-nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <Leader>r :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <Leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
-" }}}
 " Deoplete {{{
 inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
 " Close the documentation window when completion is done
@@ -197,37 +180,6 @@ let g:netrw_winsize = 86
 let g:netrw_altv = 1
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$,*'   " sort so directories on the top, files below
-" }}}
-" FZF {{{
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-let g:fzf_tags_command = 'ctags -R'
-let g:fzf_colors =
-			\ { 'fg':    ['fg', 'Normal'],
-			\ 'bg':      ['bg', 'Normal'],
-			\ 'hl':      ['fg', 'Comment'],
-			\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-			\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-			\ 'hl+':     ['fg', 'Statement'],
-			\ 'info':    ['fg', 'PreProc'],
-			\ 'border':  ['fg', 'Ignore'],
-			\ 'prompt':  ['fg', 'Conditional'],
-			\ 'pointer': ['fg', 'Exception'],
-			\ 'marker':  ['fg', 'Keyword'],
-			\ 'spinner': ['fg', 'Label'],
-			\ 'header':  ['fg', 'Comment'] }
-nnoremap <C-p> :Files<CR>
-" hide status line
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode
-			\| autocmd BufLeave <buffer> set laststatus=2 showmode
-" use ripgrep instead of ag:
-command! -bang -nargs=* Rg
-			\ call fzf#vim#grep(
-			\   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-			\   <bang>0 ? fzf#vim#with_preview('up:60%')
-			\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-			\   <bang>0)
 " }}}
 " Lightline {{{
 let g:lightline = {

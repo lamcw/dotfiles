@@ -1,14 +1,3 @@
-function () {
-
-# geometry configuration
-PROMPT_GEOMETRY_RPROMPT_ASYNC=true
-PROMPT_GEOMETRY_GIT_CONFLICTS=true
-PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
-PROMPT_GEOMETRY_COLORIZE_ROOT=true
-PROMPT_GEOMETRY_EXEC_TIME=true
-
-GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time jobs git hg)
-
 zstyle :compinstall filename '$ZDOTDIR/.zshrc'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
@@ -58,25 +47,3 @@ end
 
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/keybindings.zsh
-source $ZDOTDIR/plugins/geometry/geometry.zsh
-
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-
-# Useful fzf functions
-# fd - cd to selected directory
-fd() {
-	local dir
-	dir=$(find ${1:-.} -path '*/\.*' -prune \
-		-o -type d -print 2> /dev/null | fzf +m) &&
-		cd "$dir"
-}
-
-# fda - including hidden directories
-fda() {
-	local dir
-	dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
-}
-
-}
