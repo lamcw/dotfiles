@@ -19,7 +19,7 @@ Plug 'NLKNguyen/c-syntax.vim', { 'for': 'c' }
 Plug 'w0rp/ale', { 'on': [] }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-clangx', { 'for': ['c', 'cpp'] }
-Plug 'Shoygo/deoplete-jedi', { 'for': 'python' }
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'Shougo/neoinclude.vim', { 'for': ['c', 'cpp'] }
 
 " Tags
