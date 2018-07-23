@@ -22,7 +22,7 @@ set $browser firefox
 
 bindsym $mod+c exec $browser
 
-font pango:FontAwesome 12, SF Pro Text 12
+font pango:SF Pro Text 12
 
 # lockscreen
 bindsym $mod+Shift+p exec "$HOME/.dotfiles/sway/lock"
@@ -213,7 +213,7 @@ bar {
 	colors {
 		statusline #ffffff
 		background #323232
-		inactive_workspace #32323200 #32323200 #5c5c5c
+		inactive_workspace #323232 #323232 #5c5c5c
 	}
 }
 
@@ -230,5 +230,8 @@ bindsym XF86AudioNext exec --no-startup-id dbus-send --print-reply --dest=org.mp
 # screen brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
+
+exec udiskie &
+exec ibus-daemon -dr
 
 include __SYSCONFDIR__/sway/config.d/*
