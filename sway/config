@@ -231,7 +231,7 @@ bindsym XF86AudioNext exec --no-startup-id dbus-send --print-reply --dest=org.mp
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
 
-exec udiskie &
+exec udiskie -2nT &
 exec ibus-daemon -dr
 
 include __SYSCONFDIR__/sway/config.d/*
