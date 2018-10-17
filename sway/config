@@ -38,8 +38,8 @@ output * bg $HOME/wallpaper/wallpaper.jpg fill
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output eDP-1 pos 0,1080 res 1920x1080
-output DP-1 pos 0,0 res 2400x1350
+output eDP-1 pos 0,1080
+output DP-1 pos 0,0
 
 ### Input configuration
 #
@@ -228,8 +228,8 @@ bindsym XF86AudioPrev exec --no-startup-id dbus-send --print-reply --dest=org.mp
 bindsym XF86AudioNext exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 # screen brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 exec udiskie -2nT &
 exec ibus-daemon -dr

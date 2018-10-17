@@ -33,7 +33,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary', { 'on': [] }
 Plug 'airblade/vim-gitgutter'
-Plug '/usr/share/vim/vimfiles/', { 'as': 'fzf' }
 Plug 'junegunn/fzf.vim'
 
 call plug#end()
@@ -87,8 +86,6 @@ set updatetime=250		" set file update delay to 250ms
 set history=50			" Sets how many lines of history VIM has to remember
 set autoread			" Set to auto read when a file is changed from
 " the outside
-set autochdir			" set current directory automatically whenever I
-" switch buffers
 
 set grepprg=rg\ --vimgrep
 " }}}
@@ -221,13 +218,6 @@ nnoremap <C-p> :Files<CR>
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode
 			\| autocmd BufLeave <buffer> set laststatus=2 showmode
-" use ripgrep instead of ag:
-command! -bang -nargs=* Rg
-			\ call fzf#vim#grep(
-			\   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-			\   <bang>0 ? fzf#vim#with_preview('up:60%')
-			\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-			\   <bang>0)
 " }}}
 " Lightline {{{
 let g:lightline = {
