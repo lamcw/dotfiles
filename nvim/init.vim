@@ -22,7 +22,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-clangx', { 'for': ['c', 'cpp'] }
 Plug 'Shougo/neoinclude.vim', { 'for': ['c', 'cpp'] }
 
 " Tags
@@ -164,8 +163,12 @@ nmap <F8> :TagbarToggle<CR>
 " LanguageClient {{{
 let g:LanguageClient_serverCommands = {
 			\ 'python': ['pyls'],
+			\ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
+			\ 'c': ['cquery', '--log-file=/tmp/cq.log'],
 			\ }
 let g:LanguageClient_settingsPath = "$DOTFILES/nvim/settings.json"
+set formatexpr=LanguageClient_textDocument_rangeFormatting()
+
 nnoremap <silent> <Leader>h :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <Leader>R :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>

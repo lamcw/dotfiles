@@ -1,3 +1,9 @@
 " Syntax highlighting
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
+
+setlocal spell spelllang=en_gb
+
+set textwidth=80
+set fo+=a
+set formatoptions=tc

@@ -6,7 +6,7 @@ export ZDOTDIR=$DOTFILES/zsh
 # export CLUTTER_BACKEND=wayland
 
 # Preferred editor
-export EDITOR='nvim'
+export EDITOR=nvim
 
 # fix blank window in Java application
 export _JAVA_AWT_WM_NONREPARENTING=1

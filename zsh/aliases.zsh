@@ -35,5 +35,3 @@ function cd_up() {
 alias 'cd..'='cd_up'
 
 alias dev="cd $HOME/dev/"
-alias dp1='xrandr --output eDP1 --auto --pos 0x1350 --output DP1	\
-	   --scale 1.25x1.25 --auto --pos 0x0 --fb 2400x2430'

@@ -17,7 +17,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 # Your preferred application launcher
-set $menu dmenu_run -i -fn 'SF Pro Text-12'
+set $menu dmenu_path | dmenu -i -fn 'SF Pro Text-12' | xargs swaymsg exec
 set $browser firefox
 
 bindsym $mod+c exec $browser
@@ -25,7 +25,7 @@ bindsym $mod+c exec $browser
 font pango:SF Pro Text 12
 
 # lockscreen
-bindsym $mod+Shift+p exec "$HOME/.dotfiles/sway/lock"
+bindsym $mod+Shift+p exec "$DOTFILES/sway/lock"
 
 ### Output configuration
 #
@@ -41,6 +41,22 @@ output * bg $HOME/wallpaper/wallpaper.jpg fill
 output eDP-1 pos 0,1080
 output DP-1 pos 0,0
 
+### Idle configuration
+#
+# Example configuration:
+#
+#exec swayidle \
+#    timeout 300 'swaylock -c 000000' \
+#    timeout 600 'swaymsg "output * dpms off"' \
+#       resume 'swaymsg "output * dpms on"' \
+#    before-sleep 'swaylock -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 600 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle \
+    before-sleep 'swaymsg exec "$DOTFILES/sway/lock"'
+
 ### Input configuration
 #
 # Example configuration:
@@ -54,11 +70,12 @@ output DP-1 pos 0,0
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input "1739:30382:DLL0704:01_06CB:76AE_To" {
+input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
 	dwt enabled
 	tap enabled
+	drag enabled
 	natural_scroll enabled
-	pointer_accel 0.8
+	pointer_accel 0.8 
 }
 
 ### Key bindings
@@ -182,24 +199,24 @@ bindsym $mod+minus scratchpad show
 # Resizing containers:
 #
 mode "resize" {
-	# left will shrink the containers width
-	# right will grow the containers width
-	# up will shrink the containers height
-	# down will grow the containers height
-	bindsym $left resize shrink width 10 px or 10 ppt
-	bindsym $down resize grow height 10 px or 10 ppt
-	bindsym $up resize shrink height 10 px or 10 ppt
-	bindsym $right resize grow width 10 px or 10 ppt
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
 
-	# ditto, with arrow keys
-	bindsym Left resize shrink width 10 px or 10 ppt
-	bindsym Down resize grow height 10 px or 10 ppt
-	bindsym Up resize shrink height 10 px or 10 ppt
-	bindsym Right resize grow width 10 px or 10 ppt
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
 
-	# return to default mode
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
@@ -208,19 +225,18 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-	# position top
-	status_command i3blocks -c $DOTFILES/sway/i3blocks.conf
-	colors {
-		statusline #ffffff
-		background #323232
-		inactive_workspace #323232 #323232 #5c5c5c
-	}
+    status_command i3blocks -c $DOTFILES/sway/i3blocks.conf
+    colors {
+        statusline #ffffff
+	background #323232
+	inactive_workspace #323232 #323232 #5c5c5c
+    }
 }
 
 # audio control
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+ unmute && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%- unmute && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle && pkill -RTMIN+10 i3blocks
 
 bindsym XF86AudioPlay exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioStop exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
@@ -234,4 +250,4 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 exec udiskie -2nT &
 exec ibus-daemon -dr
 
-include __SYSCONFDIR__/sway/config.d/*
+include /etc/sway/config.d/*
