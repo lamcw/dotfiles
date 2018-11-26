@@ -63,7 +63,6 @@ source $ZDOTDIR/plugins/geometry/geometry.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-export GTK_IM_MODULE=ibus
 
 # Useful fzf functions
 # fd - cd to selected directory

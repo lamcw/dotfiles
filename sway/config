@@ -30,7 +30,7 @@ bindsym $mod+Shift+p exec "$DOTFILES/sway/lock"
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
-output * bg $HOME/wallpaper/wallpaper.jpg fill
+output * bg $HOME/wallpaper/wallpaper.jpg stretch
 
 #
 # Example configuration:
