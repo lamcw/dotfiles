@@ -16,7 +16,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'NLKNguyen/c-syntax.vim', { 'for': 'c' }
 
-Plug 'w0rp/ale', { 'on': [] }
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -39,7 +38,7 @@ call plug#end()
 " lazy load plugins
 augroup lazy_load
 	autocmd!
-	autocmd BufNewFile,BufRead * call plug#load('vim-commentary', 'ale')
+	autocmd BufNewFile,BufRead * call plug#load('vim-commentary')
 	autocmd InsertEnter * call deoplete#enable()
 				\| autocmd! lazy_load
 augroup END
@@ -180,9 +179,6 @@ nnoremap <silent> <Leader>s :call LanguageClient_textDocument_documentSymbol()<C
 inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
 " Close the documentation window when completion is done
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" }}}
-" ALE {{{
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " }}}
 " Gitgutter {{{
 let g:gitgutter_sign_added = '│'
