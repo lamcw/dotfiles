@@ -17,9 +17,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'NLKNguyen/c-syntax.vim', { 'for': 'c' }
 
 Plug 'w0rp/ale', { 'on': [] }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-clangx', { 'for': ['c', 'cpp'] }
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'Shougo/neoinclude.vim', { 'for': ['c', 'cpp'] }
 
 " Tags
@@ -158,11 +155,6 @@ set smartindent			" indent based on filetype
 set tags=.tags;
 
 nmap <F8> :TagbarToggle<CR>
-" }}}
-" Deoplete {{{
-inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
-" Close the documentation window when completion is done
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " }}}
 " ALE {{{
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'

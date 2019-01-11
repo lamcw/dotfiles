@@ -21,3 +21,5 @@
 	tool = vimdiff
 [commit]
 	gpgsign = true
+[push]
+	default = simple

@@ -35,4 +35,3 @@ function cd_up() {
 alias 'cd..'='cd_up'
 
 alias dev="cd $HOME/dev/"
-alias nvim="~callumh/nvim"
