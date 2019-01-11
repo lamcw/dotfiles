@@ -1,4 +1,4 @@
-set expandtab
-set softtabstop=4
-set shiftwidth=4
-set shiftround
+setlocal expandtab
+setlocal softtabstop=4
+setlocal shiftwidth=4
+setlocal shiftround

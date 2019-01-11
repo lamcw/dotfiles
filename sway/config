@@ -41,6 +41,9 @@ output * bg $HOME/wallpaper/wallpaper.png stretch
 output eDP-1 pos 0,1080
 output DP-1 pos 0,0
 
+# toggle LCD backlight
+bindsym F7 exec 'swaymsg exec "$DOTFILES/sway/lcd-toggle"'
+
 ### Idle configuration
 #
 # Example configuration:

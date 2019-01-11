@@ -2,7 +2,7 @@
 # plugins, and themes.
 
 # Basic utils
-alias ls='ls --color=auto'
+alias ls='ls --color=auto --group-directories-first'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 
