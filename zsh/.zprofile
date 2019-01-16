@@ -2,6 +2,7 @@
 typeset -U path
 
 which ruby > /dev/null && path=($(ruby -e 'print Gem.user_dir')/bin $path[@])
+export GEM_HOME=$HOME/.gem
 
 if [ -d "$HOME/bin" ]; then
 	path=($HOME/bin $path[@])

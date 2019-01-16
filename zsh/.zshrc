@@ -50,7 +50,7 @@ local plugins=(archlinux \
 )
 
 # source all plugins
-foreach file (`echo $plugins`)
+foreach file ($plugins)
 	if [[ -f $ZDOTDIR/plugins/$file/$file.plugin.zsh ]]; then
 		source $ZDOTDIR/plugins/$file/$file.plugin.zsh
 	fi

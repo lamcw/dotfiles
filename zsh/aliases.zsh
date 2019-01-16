@@ -17,21 +17,4 @@ alias -g ....='cd ../../..'
 alias -g .....='cd ../../../..'
 alias -g ......='cd ../../../../..'
 
-# cd up to n dirs
-# using:  cd.. 10 or cd.. dir
-function cd_up() {
-	case $1 in
-		# if not a number
-		*[!0-9]*)
-			# search dir_name in current path, if found cd to it
-			cd $( pwd | sed -r "s|(.*/$1[^/]*/).*|\1|" )
-			;;
-		*)
-			# cd ../../../ (N dirs up)
-			cd $(printf "%0.0s../" $(seq 1 $1));
-			;;
-	esac
-}
-alias 'cd..'='cd_up'
-
 alias dev="cd $HOME/dev/"
