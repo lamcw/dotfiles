@@ -18,6 +18,7 @@ compinit
 promptinit
 
 setopt COMPLETE_ALIASES
+setopt EXTENDEDGLOB
 
 HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=2000
