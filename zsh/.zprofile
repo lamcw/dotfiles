@@ -1,11 +1,11 @@
 # configure path
 typeset -U path
 
-which ruby > /dev/null && path=($(ruby -e 'print Gem.user_dir')/bin $path[@])
+which ruby > /dev/null && path=($path[@] $(ruby -e 'print Gem.user_dir')/bin)
 export GEM_HOME=$HOME/.gem
 
 if [ -d "$HOME/bin" ]; then
-	path=($HOME/bin $path[@])
+	path=($path[@] $HOME/bin)
 fi
 
 # launch sway
