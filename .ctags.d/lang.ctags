@@ -1,1 +1,3 @@
 --regex-markdown=/^(#+[ \t]+.*)/\1/h,heading,headings/
+
+--regex-make=/^([^# \t]*):/\1/t,target/
