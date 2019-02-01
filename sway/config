@@ -15,9 +15,12 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term kitty
+set $term kitty -1
 # Your preferred application launcher
-set $menu dmenu_path | dmenu -i -fn 'SF Pro Text-12' | xargs swaymsg exec
+set $menu kitty --class launcher \
+    zsh -c "print -rl -- \${(ko)commands} | fzf +x --print-query | tail -n 1 | xargs -r swaymsg -t command exec"
+for_window [app_id="^launcher$"] floating enable, border none
+
 set $browser firefox
 
 bindsym $mod+c exec $browser
@@ -78,7 +81,7 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
 	tap enabled
 	drag enabled
 	natural_scroll enabled
-	pointer_accel 0.8 
+	pointer_accel 0.8
 }
 
 ### Key bindings
@@ -231,8 +234,8 @@ bar {
     status_command i3blocks -c $DOTFILES/sway/i3blocks.conf
     colors {
         statusline #ffffff
-	background #323232
-	inactive_workspace #323232 #323232 #5c5c5c
+        background #323232
+        inactive_workspace #323232 #323232 #5c5c5c
     }
 }
 
@@ -260,3 +263,5 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 exec udiskie -t
 
 include /etc/sway/config.d/*
+
+# vim: sw=4 sts=4 et
