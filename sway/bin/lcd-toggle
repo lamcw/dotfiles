@@ -6,9 +6,9 @@ read lcd < /tmp/lcd
 
 if [ "$lcd" -eq "0" ]
 then
-	swaymsg "output eDP-1 enable"
+	swaymsg "output $1 enable"
 	echo 1 > /tmp/lcd
 else
-	swaymsg "output eDP-1 disable"
+	swaymsg "output $1 disable"
 	echo 0 > /tmp/lcd
 fi

@@ -28,12 +28,12 @@ bindsym $mod+c exec $browser
 font pango:SF Pro Text 12
 
 # lockscreen
-bindsym $mod+Shift+p exec "$DOTFILES/sway/lock"
+bindsym $mod+Shift+p exec "$DOTFILES/sway/bin/lock"
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
-output * bg $HOME/wallpaper/wallpaper.png stretch
+output * bg $HOME/wallpaper/wallpaper.jpg fill
 
 #
 # Example configuration:
@@ -45,7 +45,7 @@ output eDP-1 pos 0,1080
 output DP-1 pos 0,0
 
 # toggle LCD backlight
-bindsym F7 exec 'swaymsg exec "$DOTFILES/sway/lcd-toggle"'
+bindsym F7 exec 'swaymsg exec "$DOTFILES/sway/bin/lcd-toggle eDP-1"'
 
 ### Idle configuration
 #
@@ -61,7 +61,7 @@ bindsym F7 exec 'swaymsg exec "$DOTFILES/sway/lcd-toggle"'
 # your displays after another 600 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle \
-    before-sleep 'swaymsg exec "$DOTFILES/sway/lock"'
+    before-sleep 'swaymsg exec "$DOTFILES/sway/bin/lock"'
 
 ### Input configuration
 #
@@ -261,7 +261,5 @@ bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 exec udiskie -t
-
-include /etc/sway/config.d/*
 
 # vim: sw=4 sts=4 et
