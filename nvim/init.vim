@@ -34,8 +34,6 @@ call plug#end()
 augroup lazy_load
 	autocmd!
 	autocmd BufNewFile,BufRead * call plug#load('vim-commentary', 'ale')
-	autocmd InsertEnter * call deoplete#enable()
-				\| autocmd! lazy_load
 augroup END
 " }}}
 " Colors {{{
