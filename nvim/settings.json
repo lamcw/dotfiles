@@ -1,6 +1,3 @@
 {
-  "initializationOptions": {
-    "cacheDirectory": "/tmp/cquery"
-  },
   "pyls.plugins.pydocstyle.enabled": true
 }

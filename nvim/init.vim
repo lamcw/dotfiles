@@ -1,49 +1,60 @@
-" Vim Plug {{{
-" Automatic vim plug installation
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" Dein {{{
+let s:dein_base_path = '~/.cache/dein'
+" Required:
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state(s:dein_base_path)
+	call dein#begin(s:dein_base_path)
+
+	" Let dein manage dein
+	" Required:
+	call dein#add('Shougo/dein.vim')
+
+	" UI
+	call dein#add('challenger-deep-theme/vim',
+				\ { 'normalized_name': 'challenger_deep' })
+	call dein#add('itchyny/lightline.vim', { 'on_event': 'VimEnter' })
+
+	" Language
+	call dein#add('sheerun/vim-polyglot')
+	call dein#add('NLKNguyen/c-syntax.vim', { 'on_ft': 'c' })
+
+	call dein#add('autozimu/LanguageClient-neovim', {
+				\ 'rev': 'next',
+				\ 'build': 'bash install.sh'
+				\ })
+	call dein#add('Shougo/deoplete.nvim', {
+				\ 'on_event': 'InsertEnter',
+				\ 'hook_source': 'call deoplete#enable()'
+				\ })
+	" Tools
+	call dein#add('majutsushi/tagbar', { 'on_cmd': 'TagbarToggle' })
+	call dein#add('lambdalisue/gina.vim', { 'on_cmd': 'Gina' })
+	call dein#add('tpope/vim-surround',
+				\ { 'on_map': {
+				\     'n': ['cs', 'ds', 'ys'],
+				\     'x': 'S'
+				\ }})
+	call dein#add('tpope/vim-commentary', { 'on_map': { 'n': 'gc' }})
+	call dein#add('airblade/vim-gitgutter', {
+				\ 'on_event': 'BufWinEnter',
+				\ 'hook_post_source': 'GitGutterEnable',
+				\ })
+	call dein#add('junegunn/fzf.vim', { 'on_event': 'VimEnter' })
+
+	" Required:
+	call dein#end()
+	call dein#save_state()
 endif
 
-call plug#begin()
-
-" UI
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'itchyny/lightline.vim'
-
-" Langauge
-Plug 'sheerun/vim-polyglot'
-Plug 'NLKNguyen/c-syntax.vim', { 'for': 'c' }
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neoinclude.vim', { 'for': ['c', 'cpp'] }
-
-" Tags
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
-
-" Tools
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary', { 'on': [] }
-Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/fzf.vim'
-
-call plug#end()
-
-" lazy load plugins
-augroup lazy_load
-	autocmd!
-	autocmd BufNewFile,BufRead * call plug#load('vim-commentary')
-	autocmd InsertEnter * call deoplete#enable()
-				\| autocmd! lazy_load
-augroup END
+" If you want to install not installed plugins on startup.
+if !has('vim_starting') && dein#check_install()
+	call dein#install()
+endif
 " }}}
 " Colors {{{
+set guioptions=M
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 if (has("termguicolors"))
@@ -89,9 +100,9 @@ set grepprg=rg\ --vimgrep
 " }}}
 " Search {{{
 set ignorecase			" Ignore case when searching
-set smartcase			" When searching try to be smart about cases 
+set smartcase			" When searching try to be smart about cases
 set hlsearch			" Highlight search results
-set incsearch			" Search as characters are entered 
+set incsearch			" Search as characters are entered
 
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " }}}
@@ -158,12 +169,14 @@ set smartindent			" indent based on filetype
 set tags=.tags;
 
 nmap <F8> :TagbarToggle<CR>
+
+let g:tagbar_type_make = { 'kinds': ['m:macros', 't:targets'] }
 " }}}
 " LanguageClient {{{
 let g:LanguageClient_serverCommands = {
 			\ 'python': ['pyls'],
-			\ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
-			\ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+			\ 'cpp': ['clangd'],
+			\ 'c': ['clangd'],
 			\ }
 let g:LanguageClient_settingsPath = "$DOTFILES/nvim/settings.json"
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
@@ -171,14 +184,17 @@ set formatexpr=LanguageClient_textDocument_rangeFormatting()
 nnoremap <silent> <Leader>h :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <Leader>R :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>
-nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition({'gotoCmd': 'split'})<CR>
 nnoremap <silent> <Leader>r :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <Leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
 " }}}
 " Deoplete {{{
 inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
 " Close the documentation window when completion is done
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup deoplete_menu
+	autocmd!
+	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup END
 " }}}
 " Gitgutter {{{
 let g:gitgutter_sign_added = '│'
@@ -223,11 +239,11 @@ let g:lightline = {
 			\ 'colorscheme': 'challenger_deep',
 			\ 'active': {
 			\   'left': [[ 'mode', 'paste' ],
-			\	     [ 'fugitive', 'filename', 'modified']]
+			\	     [ 'ginabranch', 'filename', 'modified']]
 			\ },
 			\ 'component_function': {
 			\   'readonly': 'LightlineReadonly',
-			\   'fugitive': 'LightlineFugitive',
+			\   'ginabranch': 'LightlineGinaBranch',
 			\   'fileformat': 'LightlineFileformat',
 			\   'filetype': 'LightlineFiletype',
 			\   'fileencoding': 'LightlineFileencoding',
@@ -240,13 +256,15 @@ function! LightlineReadonly()
 	return &readonly && &filetype !=# 'help' ? '' : ''
 endfunction
 
-function! LightlineFugitive()
-	if exists("*fugitive#head")
-		let branch = fugitive#head()
-		"Master branch symbol
-		return branch !=# '' ? ' '.branch : ''   	
-	endif
-	return ''
+function! LightlineGinaBranch()
+	" Use try catch to check if gina exists, instead of :exists, since
+	" gina is lazily loaded
+	try
+		let l:branch = gina#component#repo#branch()
+	catch /^Vim\%((\a\+)\)\=:E117/
+		return ''
+	endtry
+	return l:branch !=# '' ? ' '.branch : ''
 endfunction
 
 function! LightlineFileformat()
@@ -260,6 +278,6 @@ endfunction
 function! LightlineFileencoding()
 	return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
 endfunction
-" }}} 
+" }}}
 
 " vim:foldmethod=marker:foldlevel=0
