@@ -3,9 +3,8 @@ export DOTFILES=$HOME/.dotfiles
 export ZDOTDIR=$DOTFILES/zsh
 
 # export GDK_BACKEND=wayland
-# export CLUTTER_BACKEND=wayland
 
-# Preferred editor
+# preferred editor
 export EDITOR=nvim
 
 # fix blank window in Java application
