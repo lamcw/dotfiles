@@ -16,7 +16,7 @@ export QEMU_AUDIO_DRV=alsa
 export SDL_VIDEODRIVER=wayland
 
 vm_path="$HOME"/bin/windows-vm
-smb_path="$HOME"/vmshared
+smb_path="$HOME"/qemu
 
 qemu-system-x86_64 \
 	-m 5G \
