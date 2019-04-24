@@ -15,9 +15,9 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term kitty -1
+set $term alacritty
 # Your preferred application launcher
-set $menu kitty --class launcher \
+set $menu $term --class launcher --command \
     zsh -c "print -rl -- \${(ko)commands} | fzf +x --print-query | tail -n 1 | xargs -r swaymsg -t command exec"
 for_window [app_id="^launcher$"] floating enable, border none
 
@@ -45,7 +45,7 @@ output eDP-1 pos 0,1080
 output DP-1 pos 0,0
 
 # toggle LCD backlight
-bindsym F7 exec 'swaymsg exec "$DOTFILES/sway/bin/lcd-toggle eDP-1"'
+bindsym F7 exec "$DOTFILES/sway/bin/lcd-toggle eDP-1"
 
 ### Idle configuration
 #
@@ -247,14 +247,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id \
 bindsym XF86AudioMute exec --no-startup-id \
     amixer -q set Master toggle && pkill -RTMIN+10 i3blocks
 
-bindsym XF86AudioPlay exec --no-startup-id \
-    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym XF86AudioStop exec --no-startup-id \
-    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
-bindsym XF86AudioPrev exec --no-startup-id \
-    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-bindsym XF86AudioNext exec --no-startup-id \
-    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym XF86AudioPlay exec --no-startup-id $DOTFILES/sway/bin/cmus toggle
+bindsym XF86AudioStop exec --no-startup-id $DOTFILES/sway/bin/cmus stop
+bindsym XF86AudioPrev exec --no-startup-id $DOTFILES/sway/bin/cmus prev
+bindsym XF86AudioNext exec --no-startup-id $DOTFILES/sway/bin/cmus next
 
 # screen brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5

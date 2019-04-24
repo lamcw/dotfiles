@@ -11,5 +11,3 @@ export EDITOR=nvim
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export GPG_TTY=$(tty)
-
-export KITTY_ENABLE_WAYLAND=1
