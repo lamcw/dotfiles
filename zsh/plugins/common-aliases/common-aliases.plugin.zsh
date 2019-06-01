@@ -66,7 +66,7 @@ _media_fts=(ape avi flv m4a mkv mov mp3 mpeg mpg ogg ogm rm wav webm)
 for ft in $_media_fts; do alias -s $ft=mplayer; done
 
 #read documents
-alias -s pdf=acroread
+alias -s pdf=zathura
 alias -s ps=gv
 alias -s dvi=xdvi
 alias -s chm=xchm

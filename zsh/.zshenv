@@ -2,8 +2,6 @@ export DOTFILES=$HOME/.dotfiles
 # override default zsh startup files directory
 export ZDOTDIR=$DOTFILES/zsh
 
-# export GDK_BACKEND=wayland
-
 # preferred editor
 export EDITOR=nvim
 
