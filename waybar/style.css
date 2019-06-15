@@ -1,0 +1,101 @@
+* {
+    border: none;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    min-height: 24px;
+}
+
+window#waybar {
+    color: #FFF;
+    background: rgba(43, 48, 59, 0.5);
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* pill style */
+#workspaces, #custom-cmus, #mode {
+    border-radius: 26px;
+}
+
+#workspaces {
+    margin: 2px 12px;
+    background-color: #282A36;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button {
+    color: #F8F8F2;
+}
+
+#workspaces button.focused {
+    color: #9AEDFE;
+}
+
+#workspaces button.urgent {
+    background-color: #EB4D4B;
+}
+
+#workspaces button:hover {
+    color: #FF79C6;
+    border-radius: inherit;
+}
+
+/* margin between modules and bar */
+#custom-cmus, #network, #clock, #battery, #cpu, #memory,
+#temperature, #backlight, #tray, #custom-alsa {
+    margin: 2px 0;
+}
+
+/* style that shares between modules */
+#network, #clock, #battery, #cpu, #memory, #temperature, #backlight, #tray,
+#mode, #custom-alsa, #custom-cmus {
+    padding: 0 10px;
+    color: #F8F8F2;
+    background-color: #282A36;
+}
+
+#mode {
+    margin: 2px 12px 2px 0px;
+    background-color: #FF0066;
+}
+
+#custom-cmus {
+    color: #111;
+    background-color: #FFF;
+}
+
+#network {
+    padding-left: 15px;
+    border-top-left-radius: 26px;
+    border-bottom-left-radius: 26px;
+}
+
+#clock {
+    padding-right: 15px;
+    margin-right: 12px;
+    border-top-right-radius: 26px;
+    border-bottom-right-radius: 26px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}

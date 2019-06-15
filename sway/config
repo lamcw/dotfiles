@@ -25,7 +25,7 @@ set $browser firefox
 
 bindsym $mod+c exec $browser
 
-font pango:SF Pro Text 12
+font pango: SF Pro Text 12
 
 # lockscreen
 bindsym $mod+Shift+p exec "$DOTFILES/sway/bin/lock"
@@ -231,21 +231,16 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    status_command i3blocks -c $DOTFILES/sway/i3blocks.conf
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #323232 #323232 #5c5c5c
-    }
+    swaybar_command waybar
 }
 
 # audio control
 bindsym XF86AudioRaiseVolume exec \
-    amixer -q set Master 5%+ unmute && pkill -RTMIN+10 i3blocks
+    amixer -q set Master 5%+ unmute && pkill -x -RTMIN+10 waybar
 bindsym XF86AudioLowerVolume exec \
-    amixer -q set Master 5%- unmute && pkill -RTMIN+10 i3blocks
+    amixer -q set Master 5%- unmute && pkill -x -RTMIN+10 waybar
 bindsym XF86AudioMute exec \
-    amixer -q set Master toggle && pkill -RTMIN+10 i3blocks
+    amixer -q set Master toggle && pkill -x -RTMIN+10 waybar
 
 bindsym XF86AudioPlay exec $DOTFILES/sway/bin/cmus toggle
 bindsym XF86AudioStop exec $DOTFILES/sway/bin/cmus stop

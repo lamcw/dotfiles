@@ -1,0 +1,79 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "modules-left": ["sway/workspaces", "sway/mode", "custom/cmus"],
+    "modules-center": ["sway/window"],
+    "modules-right": [
+        "network",
+        "cpu",
+        "memory",
+        "temperature",
+        "custom/alsa",
+        "backlight",
+        "battery",
+        "clock",
+        "tray"
+    ],
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%a %d %b %H:%M}",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        "thermal-zone": 10,
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""],
+	"on-scroll-up": "light -U 1",
+	"on-scroll-down": "light -A 1"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength%)"
+    },
+   "custom/alsa": {
+        "exec": "amixer get Master | sed -nre 's/.*\\[off\\].*/     /p; s/.*\\[(.*%)\\].*/\\1 /p'",
+        "signal": 10,
+        "interval": 10,
+        "tooltip": false
+    },
+    "custom/cmus": {
+        "format": " {}",
+        "interval": 10,
+	"max-length": 30,
+        "exec": "cmus-remote -C \"format_print '%a - %t'\"",
+        "exec-if": "pgrep cmus",
+        "escape": true
+    }
+}
