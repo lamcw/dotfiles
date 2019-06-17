@@ -1,3 +1,10 @@
+$waybar-pill-vmargin: 3px;
+$waybar-pill-hmargin: 12px;
+$waybar-pill-radius: 28px;
+
+$waybar-pill-bg: #282A36;
+$waybar-text-color: #F8F8F2;
+
 * {
   border: none;
   font-family: Roboto, Helvetica, Arial, sans-serif;
@@ -5,7 +12,7 @@
 }
 
 window#waybar {
-  color: #F8F8F2;
+  color: $waybar-text-color;
   background: rgba(43, 48, 59, 0.5);
 }
 
@@ -15,17 +22,17 @@ window#waybar.hidden {
 
 /* pill style */
 #workspaces, #custom-cmus, #mode {
-  border-radius: 28px;
+  border-radius: $waybar-pill-radius;
 }
 
 #workspaces {
-  margin: 3px 12px;
-  background-color: #282A36;
+  margin: $waybar-pill-vmargin $waybar-pill-hmargin;
+  background-color: $waybar-pill-bg;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-  color: #F8F8F2;
+  color: $waybar-text-color;
 }
 
 #workspaces button.focused {
@@ -44,38 +51,38 @@ window#waybar.hidden {
 /* margin between modules and bar */
 #custom-cmus, #network, #clock, #battery, #cpu, #memory,
 #temperature, #backlight, #tray, #custom-alsa {
-  margin: 3px 0;
+  margin: $waybar-pill-vmargin 0;
 }
 
 /* style that shares between modules */
 #network, #clock, #battery, #cpu, #memory, #temperature, #backlight, #tray,
 #mode, #custom-alsa, #custom-cmus {
   padding: 0 10px;
-  color: #F8F8F2;
-  background-color: #282A36;
+  color: $waybar-text-color;
+  background-color: $waybar-pill-bg;
 }
 
 #mode {
-  margin: 3px 12px 3px 0px;
+  margin: $waybar-pill-vmargin $waybar-pill-hmargin $waybar-pill-vmargin 0px;
   background-color: #800000;
 }
 
 #custom-cmus {
   color: #111;
-  background-color: #F8F8F2;
+  background-color: $waybar-text-color;
 }
 
 #network {
   padding-left: 15px;
-  border-top-left-radius: 28px;
-  border-bottom-left-radius: 28px;
+  border-top-left-radius: $waybar-pill-radius;
+  border-bottom-left-radius: $waybar-pill-radius;
 }
 
 #clock {
   padding-right: 15px;
   margin-right: 12px;
-  border-top-right-radius: 28px;
-  border-bottom-right-radius: 28px;
+  border-top-right-radius: $waybar-pill-radius;
+  border-bottom-right-radius: $waybar-pill-radius;
 }
 
 @keyframes blink {

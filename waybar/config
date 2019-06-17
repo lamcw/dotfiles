@@ -14,6 +14,9 @@
         "clock",
         "tray"
     ],
+    "sway/window": {
+        "max-length": 50
+    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -40,8 +43,8 @@
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": ["", ""],
-	"on-scroll-up": "light -U 1",
-	"on-scroll-down": "light -A 1"
+        "on-scroll-up": "light -U 1",
+        "on-scroll-down": "light -A 1"
     },
     "battery": {
         "states": {
@@ -59,11 +62,11 @@
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "tooltip-format-wifi": "{essid} ({signalStrength%)"
+        "format-alt": ": {bandwidthDownBits} : {bandwidthUpBits} ({signalStrength}%)",
+	"tooltip-format-wifi": "{essid} ({signalStrength}%)"
     },
-   "custom/alsa": {
-        "exec": "amixer get Master | sed -nre 's/.*\\[off\\].*/     /p; s/.*\\[(.*%)\\].*/\\1 /p'",
+    "custom/alsa": {
+        "exec": "amixer get Master | sed -nre 's/.*\\[off\\].*/  /p; s/.*\\[(.*%)\\].*/\\1 /p'",
         "signal": 10,
         "interval": 10,
         "tooltip": false
@@ -71,7 +74,7 @@
     "custom/cmus": {
         "format": " {}",
         "interval": 10,
-	"max-length": 30,
+        "max-length": 30,
         "exec": "cmus-remote -C \"format_print '%a - %t'\"",
         "exec-if": "pgrep cmus",
         "escape": true
