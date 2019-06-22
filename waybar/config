@@ -15,7 +15,8 @@
         "tray"
     ],
     "sway/window": {
-        "max-length": 50
+        "max-length": 50,
+        "tooltip": false
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
