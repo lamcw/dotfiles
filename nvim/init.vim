@@ -19,10 +19,13 @@ if dein#load_state(s:dein_base_path)
 	" Language
 	call dein#add('sheerun/vim-polyglot')
 	call dein#add('NLKNguyen/c-syntax.vim', { 'on_ft': 'c' })
+	call dein#add('raimon49/requirements.txt.vim',
+				\ { 'on_ft': 'requirements' })
 
 	call dein#add('autozimu/LanguageClient-neovim', {
 				\ 'rev': 'next',
-				\ 'build': 'bash install.sh'
+				\ 'build': 'bash install.sh',
+				\ 'on_event': 'BufWinEnter',
 				\ })
 	call dein#add('Shougo/deoplete.nvim', {
 				\ 'on_event': 'InsertEnter',
@@ -177,16 +180,20 @@ let g:LanguageClient_serverCommands = {
 			\ 'python': ['pyls'],
 			\ 'cpp': ['clangd'],
 			\ 'c': ['clangd'],
+			\ 'java': ['jdtls', '-data', getcwd()],
 			\ }
 let g:LanguageClient_settingsPath = "$DOTFILES/nvim/settings.json"
-set formatexpr=LanguageClient_textDocument_rangeFormatting()
+let g:LanguageClient_useFloatingHover = 1
 
 nnoremap <silent> <Leader>h :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <Leader>R :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <Leader>f :call LanguageClient_textDocument_formatting()<CR>
 nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition({'gotoCmd': 'split'})<CR>
+nnoremap <silent> <Leader>t :call LanguageClient_textDocument_typeDefinition()<CR>
+nnoremap <silent> <Leader>i :call LanguageClient_textDocument_implementation()<CR>
 nnoremap <silent> <Leader>r :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <Leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <silent> <Leader>m :call LangaugeClient_contextMenu()<CR>
 " }}}
 " Deoplete {{{
 inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
@@ -205,15 +212,17 @@ let g:gitgutter_sign_modified_removed = '│'
 " }}}
 " Netrw {{{
 let g:netrw_liststyle = 3	" tree-view
-let g:netrw_winsize = 86
+let g:netrw_winsize = 10
+let g:netrw_browser_split = 4
 let g:netrw_altv = 1
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$,*'   " sort so directories on the top, files below
+let g:netrw_dirhistmax = 0      " suppress history
 " }}}
 " FZF {{{
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
-let g:fzf_tags_command = 'ctags -R'
+let g:fzf_tags_command = 'ctags'
 let g:fzf_colors =
 			\ { 'fg':    ['fg', 'Normal'],
 			\ 'bg':      ['bg', 'Normal'],
@@ -231,8 +240,8 @@ let g:fzf_colors =
 nnoremap <C-p> :Files<CR>
 " hide status line
 autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode
-			\| autocmd BufLeave <buffer> set laststatus=2 showmode
+autocmd  FileType fzf set laststatus=0
+			\| autocmd BufLeave <buffer> set laststatus=2
 " }}}
 " Lightline {{{
 let g:lightline = {
