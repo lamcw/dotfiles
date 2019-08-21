@@ -1,13 +1,10 @@
 function () {
 
   # geometry configuration
-  PROMPT_GEOMETRY_RPROMPT_ASYNC=true
-  PROMPT_GEOMETRY_GIT_CONFLICTS=true
-  PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
-  PROMPT_GEOMETRY_COLORIZE_ROOT=true
-  PROMPT_GEOMETRY_EXEC_TIME=true
+  GEOMETRY_STATUS_SYMBOL_COLOR_HASH=true
 
-  GEOMETRY_PROMPT_PLUGINS=(virtualenv exec_time jobs git hg)
+  GEOMETRY_RPROMPT+=(geometry_virtualenv geometry_exec_time geometry_jobs geometry_git)
+  GEOMETRY_INFO=()
 
   zstyle :compinstall filename '$ZDOTDIR/.zshrc'
   zstyle ':completion:*' menu select
@@ -47,7 +44,8 @@ function () {
     colored-man-pages \
     common-aliases \
     fast-syntax-highlighting \
-    git
+    git \
+    geometry
   )
 
   # source all plugins
@@ -59,7 +57,6 @@ function () {
 
   source $ZDOTDIR/aliases.zsh
   source $ZDOTDIR/keybindings.zsh
-  source $ZDOTDIR/plugins/geometry/geometry.zsh
 
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/fzf/completion.zsh

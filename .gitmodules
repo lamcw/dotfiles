@@ -4,3 +4,4 @@
 [submodule "zsh/plugins/geometry"]
 	path = zsh/plugins/geometry
 	url = https://github.com/geometry-zsh/geometry.git
+	branch = mnml
