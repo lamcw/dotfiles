@@ -64,7 +64,6 @@ if (has("termguicolors"))
 	set termguicolors
 endif
 
-syntax enable			" turn on syntax highlight
 if &term =~ '256color'
 	" disable Background Color Erase (BCE) so that color schemes
 	" render properly when inside 256-color tmux and GNU screen.
@@ -183,7 +182,6 @@ let g:LanguageClient_serverCommands = {
 			\ 'java': ['jdtls', '-data', getcwd()],
 			\ }
 let g:LanguageClient_settingsPath = "$DOTFILES/nvim/settings.json"
-let g:LanguageClient_useFloatingHover = 1
 
 nnoremap <silent> <Leader>h :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <Leader>R :call LanguageClient_textDocument_rename()<CR>
