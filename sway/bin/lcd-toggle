@@ -1,14 +1,20 @@
 #!/bin/sh
 
-[ -f /tmp/lcd ] || touch /tmp/lcd
+lcd_state=/tmp/sway/lcd
 
-read lcd < /tmp/lcd
+if [ ! -f $lcd_state ]
+then
+	dirname $lcd_state | xargs mkdir -p
+	swaymsg -t get_outputs | grep "\"active\": false" > /dev/null && echo 0 > $lcd_state
+fi
 
-if [ "$lcd" -eq "0" ]
+read lcd < $lcd_state
+
+if [ "$lcd" == "0" ]
 then
 	swaymsg "output $1 enable"
-	echo 1 > /tmp/lcd
+	echo 1 > $lcd_state
 else
 	swaymsg "output $1 disable"
-	echo 0 > /tmp/lcd
+	echo 0 > $lcd_state
 fi
