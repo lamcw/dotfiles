@@ -28,7 +28,7 @@ bindsym $mod+c exec $browser
 font pango: SF Pro Text 12
 
 # lockscreen
-bindsym $mod+Shift+p exec "$DOTFILES/sway/bin/lock"
+bindsym $mod+Shift+p exec swaylock
 
 ### Output configuration
 #
