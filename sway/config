@@ -61,7 +61,7 @@ bindsym F7 exec "$DOTFILES/sway/bin/lcd-toggle eDP-1"
 # your displays after another 600 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle \
-    before-sleep 'swaymsg exec "$DOTFILES/sway/bin/lock"'
+    before-sleep 'swaylock'
 
 ### Input configuration
 #
