@@ -8,6 +8,7 @@ zstyle :compinstall filename '$ZDOTDIR/.zshrc'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 
+fpath+=$ZDOTDIR/functions
 autoload -Uz compinit promptinit
 compinit
 promptinit
@@ -22,21 +23,6 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt SHARE_HISTORY
-
-# pip zsh completion start
-# not using eval for faster startup
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-    COMP_CWORD=$(( cword-1 )) \
-    PIP_AUTO_COMPLETE=1 $words[1] ) )
-}
-compctl -K _pip_completion pip
-# pip zsh completion end
-# for pip3
-compctl -K _pip_completion pip3
 
 local plugins=(archlinux \
   colored-man-pages \
@@ -53,21 +39,11 @@ foreach file ($plugins)
   fi
 end
 
-source $ZDOTDIR/aliases.zsh
-source $ZDOTDIR/keybindings.zsh
+foreach file ($ZDOTDIR/rc/*.zsh)
+  source $file
+end
 
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-# fshow - git commit browser
-fshow() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
-                (grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                {}
-FZF-EOF"
-}
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
