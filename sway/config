@@ -33,7 +33,7 @@ bindsym $mod+Shift+p exec swaylock
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
-output * bg $HOME/wallpaper/wallpaper.jpg fill
+output * bg $HOME/wallpaper/wallpaper.jpg center
 
 #
 # Example configuration:
@@ -242,14 +242,15 @@ bindsym XF86AudioLowerVolume exec \
 bindsym XF86AudioMute exec \
     amixer -q set Master toggle && pkill -x -RTMIN+10 waybar
 
-bindsym XF86AudioPlay exec $DOTFILES/sway/bin/cmus toggle
-bindsym XF86AudioStop exec $DOTFILES/sway/bin/cmus stop
-bindsym XF86AudioPrev exec $DOTFILES/sway/bin/cmus prev
-bindsym XF86AudioNext exec $DOTFILES/sway/bin/cmus next
+bindsym XF86AudioPlay exec sp play
+bindsym XF86AudioNext exec sp next
+bindsym XF86AudioPrev exec sp prev
 
 # screen brightness
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
+
+bindsym --release Print exec grim -g \"$(slurp)" - | wl-copy
 
 exec udiskie -t
 

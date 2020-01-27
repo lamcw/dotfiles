@@ -14,7 +14,7 @@ window#waybar.hidden {
 }
 
 /* pill style */
-#workspaces, #custom-cmus, #mode {
+#workspaces, #mode {
   border-radius: 28px;
 }
 
@@ -42,14 +42,14 @@ window#waybar.hidden {
 }
 
 /* margin between modules and bar */
-#custom-cmus, #network, #clock, #battery, #cpu, #memory,
+#network, #clock, #battery, #cpu, #memory,
 #temperature, #backlight, #tray, #custom-alsa {
   margin: 3px 0;
 }
 
 /* style that shares between modules */
 #network, #clock, #battery, #cpu, #memory, #temperature, #backlight, #tray,
-#mode, #custom-alsa, #custom-cmus {
+#mode, #custom-alsa {
   padding: 0 10px;
   color: #F8F8F2;
   background-color: #282A36;
@@ -58,11 +58,6 @@ window#waybar.hidden {
 #mode {
   margin: 3px 12px 3px 0px;
   background-color: #800000;
-}
-
-#custom-cmus {
-  color: #111;
-  background-color: #F8F8F2;
 }
 
 #network {

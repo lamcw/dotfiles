@@ -1,8 +1,0 @@
-#!/bin/sh
-
-case $1 in
-	"toggle") cmus-remote -u;;
-	"stop") cmus-remote -s;;
-	"next") cmus-remote -n;;
-	"prev") cmus-remote -r;;
-esac

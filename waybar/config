@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "bottom",
-    "modules-left": ["sway/workspaces", "sway/mode", "custom/cmus"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
     "modules-right": [
         "network",
@@ -71,13 +71,5 @@
         "signal": 10,
         "interval": 10,
         "tooltip": false
-    },
-    "custom/cmus": {
-        "format": " {}",
-        "interval": 10,
-        "max-length": 30,
-        "exec": "cmus-remote -C \"format_print '%a - %t'\"",
-        "exec-if": "pgrep cmus",
-        "escape": true
     }
 }

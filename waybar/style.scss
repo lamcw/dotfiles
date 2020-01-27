@@ -21,7 +21,7 @@ window#waybar.hidden {
 }
 
 /* pill style */
-#workspaces, #custom-cmus, #mode {
+#workspaces, #mode {
   border-radius: $waybar-pill-radius;
 }
 
@@ -49,14 +49,14 @@ window#waybar.hidden {
 }
 
 /* margin between modules and bar */
-#custom-cmus, #network, #clock, #battery, #cpu, #memory,
+#network, #clock, #battery, #cpu, #memory,
 #temperature, #backlight, #tray, #custom-alsa {
   margin: $waybar-pill-vmargin 0;
 }
 
 /* style that shares between modules */
 #network, #clock, #battery, #cpu, #memory, #temperature, #backlight, #tray,
-#mode, #custom-alsa, #custom-cmus {
+#mode, #custom-alsa {
   padding: 0 10px;
   color: $waybar-text-color;
   background-color: $waybar-pill-bg;
@@ -65,11 +65,6 @@ window#waybar.hidden {
 #mode {
   margin: $waybar-pill-vmargin $waybar-pill-hmargin $waybar-pill-vmargin 0px;
   background-color: #800000;
-}
-
-#custom-cmus {
-  color: #111;
-  background-color: $waybar-text-color;
 }
 
 #network {
