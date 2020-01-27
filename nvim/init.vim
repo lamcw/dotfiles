@@ -45,6 +45,7 @@ if dein#load_state(s:dein_base_path)
 				\ 'hook_post_source': 'GitGutterEnable',
 				\ })
 	call dein#add('junegunn/fzf.vim', { 'on_event': 'VimEnter' })
+	call dein#add('norcalli/nvim-colorizer.lua')
 
 	" Required:
 	call dein#end()
@@ -78,6 +79,8 @@ colorscheme challenger_deep
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
 	syntax on
 endif
+
+lua require'colorizer'.setup()
 " }}}
 " Misc {{{
 set pastetoggle=<F2>		" Use F2 to toggle paste mode
@@ -191,7 +194,7 @@ nnoremap <silent> <Leader>t :call LanguageClient_textDocument_typeDefinition()<C
 nnoremap <silent> <Leader>i :call LanguageClient_textDocument_implementation()<CR>
 nnoremap <silent> <Leader>r :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <Leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <silent> <Leader>m :call LangaugeClient_contextMenu()<CR>
+nnoremap <silent> <Leader>m :call LanguageClient_contextMenu()<CR>
 " }}}
 " Deoplete {{{
 inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
