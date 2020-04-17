@@ -14,7 +14,7 @@ if dein#load_state(s:dein_base_path)
 	" UI
 	call dein#add('challenger-deep-theme/vim',
 				\ { 'normalized_name': 'challenger_deep' })
-	call dein#add('itchyny/lightline.vim', { 'on_event': 'VimEnter' })
+	call dein#add('itchyny/lightline.vim')
 
 	" Language
 	call dein#add('sheerun/vim-polyglot')
