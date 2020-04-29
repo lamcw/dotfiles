@@ -19,8 +19,6 @@ if dein#load_state(s:dein_base_path)
 	" Language
 	call dein#add('sheerun/vim-polyglot')
 	call dein#add('NLKNguyen/c-syntax.vim', { 'on_ft': 'c' })
-	call dein#add('raimon49/requirements.txt.vim',
-				\ { 'on_ft': 'requirements' })
 
 	call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 
@@ -242,8 +240,11 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>fs <Plug>(coc-format-selected)
+nmap <leader>fs <Plug>(coc-format-selected)
+
+xmap <leader>f  <Plug>(coc-format)
+nmap <leader>f  <Plug>(coc-format)
 
 augroup mygroup
   autocmd!
@@ -284,11 +285,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings using CoCList:
 " Show all diagnostics.
