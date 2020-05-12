@@ -304,14 +304,6 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}}
-" Deoplete {{{
-inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
-" Close the documentation window when completion is done
-augroup deoplete_menu
-	autocmd!
-	autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-augroup END
-" }}}
 " Gitgutter {{{
 let g:gitgutter_sign_added = '│'
 let g:gitgutter_sign_modified = '│'
