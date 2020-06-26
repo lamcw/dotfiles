@@ -80,6 +80,12 @@ window#waybar.hidden {
   border-bottom-right-radius: $waybar-pill-radius;
 }
 
+#tray {
+  margin-right: 12px;
+  border-top-right-radius: $waybar-pill-radius;
+  border-bottom-right-radius: $waybar-pill-radius;
+}
+
 @keyframes blink {
   to {
     background-color: #ffffff;

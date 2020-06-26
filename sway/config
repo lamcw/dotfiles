@@ -33,7 +33,7 @@ bindsym $mod+Shift+p exec swaylock
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
-output * bg $HOME/wallpaper/wallpaper.jpg center
+output * bg $HOME/wallpaper/wallpaper.jpg center #bee6de
 
 #
 # Example configuration:
