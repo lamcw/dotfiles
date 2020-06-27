@@ -1,6 +1,11 @@
 #
 # Functions
 #
+#
+
+function git_current_branch() {
+  git rev-parse --abbrev-ref HEAD
+}
 
 # The name of the current branch
 # Back-compatibility wrapper for when this function was defined here in
