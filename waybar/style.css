@@ -73,6 +73,14 @@ window#waybar.hidden {
   border-bottom-right-radius: 28px;
 }
 
+#tray {
+  margin-right: 12px;
+  border-top-right-radius: 28px;
+  border-bottom-right-radius: 28px;
+  border-top-left-radius: 28px;
+  border-bottom-left-radius: 28px;
+}
+
 @keyframes blink {
   to {
     background-color: #ffffff;

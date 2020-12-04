@@ -84,6 +84,8 @@ window#waybar.hidden {
   margin-right: 12px;
   border-top-right-radius: $waybar-pill-radius;
   border-bottom-right-radius: $waybar-pill-radius;
+  border-top-left-radius: $waybar-pill-radius;
+  border-bottom-left-radius: $waybar-pill-radius;
 }
 
 @keyframes blink {
