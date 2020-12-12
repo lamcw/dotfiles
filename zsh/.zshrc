@@ -9,6 +9,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 
 fpath+=$ZDOTDIR/functions
+autoload $ZDOTDIR/functions/*
 autoload -Uz compinit promptinit
 compinit
 promptinit
@@ -47,3 +48,7 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
+# neovim as man pager
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
