@@ -1,3 +1,7 @@
+" Ployglot {{{
+" https://github.com/sheerun/vim-polyglot#autoindent
+let g:polyglot_disabled = ['autoindent']
+" }}}
 " Dein {{{
 let s:dein_base_path = '~/.cache/dein'
 " Required:
