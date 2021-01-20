@@ -314,6 +314,10 @@ let g:gitgutter_sign_modified = '│'
 let g:gitgutter_sign_removed = '│'
 let g:gitgutter_sign_removed_first_line = '│'
 let g:gitgutter_sign_modified_removed = '│'
+
+" Jumping between hunks
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 " }}}
 " Netrw {{{
 let g:netrw_liststyle = 3	" tree-view
