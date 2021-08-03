@@ -1,7 +1,7 @@
 " Ployglot {{{
 " https://github.com/sheerun/vim-polyglot#autoindent
 " https://github.com/sheerun/vim-polyglot#default-settings
-let g:polyglot_disabled = ['autoindent', 'sensible']
+let g:polyglot_disabled = ['autoindent', 'sensible', 'python']
 " }}}
 " Dein {{{
 let s:dein_base_path = '~/.cache/dein'
@@ -26,6 +26,7 @@ if dein#load_state(s:dein_base_path)
 	call dein#add('NLKNguyen/c-syntax.vim', { 'on_ft': 'c' })
 
 	call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
+	call dein#add('numirias/semshi')
 
 	" Tools
 	call dein#add('majutsushi/tagbar', { 'on_cmd': 'TagbarToggle' })
