@@ -52,5 +52,5 @@ source /usr/share/doc/fzf/examples/completion.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 # neovim as man pager
-# export MANPAGER='nvim +Man!'
-# export MANWIDTH=999
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999

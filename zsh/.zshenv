@@ -3,6 +3,6 @@ export DOTFILES=${DOTFILES:-$HOME/.dotfiles}
 export ZDOTDIR=${ZDOTDIR:-$DOTFILES/zsh}
 
 # preferred editor
-export EDITOR=${EDITOR:-vi}
+export EDITOR=${EDITOR:-nvim}
 
 export GPG_TTY=$(tty)
