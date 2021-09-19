@@ -44,11 +44,13 @@ foreach file ($ZDOTDIR/rc/*.zsh)
   source $file
 end
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+# source /usr/share/fzf/key-bindings.zsh
+# source /usr/share/fzf/completion.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 # neovim as man pager
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
+# export MANPAGER='nvim +Man!'
+# export MANWIDTH=999
