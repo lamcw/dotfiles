@@ -1,2 +1,1 @@
-setlocal cindent
-set colorcolumn=88
+setlocal colorcolumn=88

@@ -20,8 +20,8 @@ cmp.setup {
       select = true,
     },
     ['<Tab>'] = function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
+      if cmp.visible() then
+        cmp.select_next_item()
       elseif not check_back_space() then
         cmp.mapping.complete()(core, fallback)
       else
@@ -29,8 +29,8 @@ cmp.setup {
       end
     end,
     ['<S-Tab>'] = function(fallback)
-      if vim.fn.pumvisible() == 1 then
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
+      if cmp.visible() then
+        cmp.select_prev_item()
       else
         fallback()
       end

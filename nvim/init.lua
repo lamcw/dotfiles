@@ -48,7 +48,8 @@ vim.o.rnu = true
 
 vim.cmd('filetype plugin indent on')
 vim.o.modelines = 1
-vim.o.smartindent = true
+vim.o.autoindent = true
+vim.o.smartindent = false
 
 -- natural splitting
 vim.o.splitbelow = true
@@ -78,13 +79,11 @@ split_adjust_keys = {'<', '+', '-', '>'}
 
 -- use ctrl+{h,j,k,l} to navigate windows from any mode
 for _, mode_keys in ipairs(mode_prefix_keys) do
-  mode = mode_keys['mode']
-  pre = mode_keys['pre']
   for _, key in ipairs(direction_keys) do
     vim.api.nvim_set_keymap(
-      mode,
+      mode_keys.mode,
       string.format('<C-%s>', key),
-      pre .. key,
+      mode_keys.pre .. key,
       { noremap = true }
     )
   end

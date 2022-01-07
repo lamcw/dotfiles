@@ -28,6 +28,13 @@ return require('packer').startup(function()
     config = [[require('config.cmp')]]
   }
 
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    branch = '0.5-compat',
+    run = ':TSUpdate',
+    config = [[require('config.treesitter')]]
+  }
+
   -- Syntax highlighting
   use { 'NLKNguyen/c-syntax.vim', ft = { 'c' } }
 

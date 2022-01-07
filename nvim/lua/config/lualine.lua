@@ -7,6 +7,13 @@ local function lualine_gina_branch()
   return branch ~= '' and ' ' .. branch or ''
 end
 
+local function treesitter_statusline()
+  return vim.fn['nvim_treesitter#statusline']({
+    indicator_size = 40,
+    separator = ' → '
+  })
+end
+
 require'lualine'.setup {
   options = {
     icons_enabled = false,
@@ -14,11 +21,16 @@ require'lualine'.setup {
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
   },
+  tabline = {
+    lualine_a = { 'tabs' },
+    lualine_b = { treesitter_statusline },
+    lualine_z = { 'buffers' },
+  },
   sections = {
     lualine_b = {
       lualine_readonly,
       lualine_gina_branch,
-      { 'diagnostics', sources={ 'nvim_lsp' } }
+      { 'diagnostics', sources = { 'nvim_diagnostic' } }
     },
   },
   extensions = { 'fzf' }
