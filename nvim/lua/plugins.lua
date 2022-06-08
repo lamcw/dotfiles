@@ -30,7 +30,6 @@ return require('packer').startup(function()
 
   use {
     'nvim-treesitter/nvim-treesitter',
-    branch = '0.5-compat',
     run = ':TSUpdate',
     config = [[require('config.treesitter')]]
   }
@@ -72,7 +71,8 @@ return require('packer').startup(function()
   use {
     'junegunn/fzf.vim',
     event = 'VimEnter',
-    setup = [[require('config.fzf')]]
+    setup = [[require('config.fzf')]],
+    requires = { 'junegunn/fzf' }
   }
 
   -- Automatically set up configuration after cloning packer.nvim
