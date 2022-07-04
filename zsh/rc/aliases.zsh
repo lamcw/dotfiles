@@ -2,7 +2,7 @@
 # plugins, and themes.
 
 # Basic utils
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls --color=auto'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 
@@ -17,4 +17,4 @@ alias -g ....='cd ../../..'
 alias -g .....='cd ../../../..'
 alias -g ......='cd ../../../../..'
 
-alias dev="cd $HOME/src/"
+# alias dev="cd $HOME/src/"

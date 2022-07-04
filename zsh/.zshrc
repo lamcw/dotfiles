@@ -28,7 +28,6 @@ setopt SHARE_HISTORY
 local plugins=(archlinux \
   colored-man-pages \
   common-aliases \
-  fast-syntax-highlighting \
   git \
   geometry
 )
@@ -40,12 +39,14 @@ foreach file ($plugins)
   fi
 end
 
+source $ZDOTDIR/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh
+
 foreach file ($ZDOTDIR/rc/*.zsh)
   source $file
 end
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+# source /usr/share/fzf/key-bindings.zsh
+# source /usr/share/fzf/completion.zsh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
