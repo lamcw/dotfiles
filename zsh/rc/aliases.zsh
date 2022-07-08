@@ -17,4 +17,4 @@ alias -g ....='cd ../../..'
 alias -g .....='cd ../../../..'
 alias -g ......='cd ../../../../..'
 
-# alias dev="cd $HOME/src/"
+alias dev="cd $HOME/work/"

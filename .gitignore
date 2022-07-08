@@ -3,6 +3,7 @@ nvim/plugged
 zsh/.zcompdump*
 zsh/oh-my-zsh
 zsh/.histfile
+zsh/.zsh_sessions
 
 nvim/.netrwhist
 
