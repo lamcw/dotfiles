@@ -1,7 +1,7 @@
 [user]
-	name = lamcw
-	email = thomas@lamcw.com
-	signingkey = thomas@lamcw.com
+	name = Thomas Lam
+	email = thomaslam@canva.com
+	signingkey = thomaslam@canva.com
 [credential]
 	helper = store
 [alias]
@@ -23,3 +23,14 @@
 	gpgsign = true
 [pull]
 	rebase = true
+[trace2]
+	eventTarget = af_unix:dgram:/tmp/olly-git-trace2.sock
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[protocol]
+	version = 2
+[maintenance]
+	repo = /Users/thomaslam/work/canva
