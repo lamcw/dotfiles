@@ -8,7 +8,8 @@
 	# git log graph
 	gr = log --all --decorate --oneline --graph
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/thomaslam/.gitignore_global
+	untrackedCache = true
 [merge]
 	tool = vimdiff
 [mergetool]
@@ -34,3 +35,7 @@
 	version = 2
 [maintenance]
 	repo = /Users/thomaslam/work/canva
+[push]
+	autoSetupRemote = true
+[checkout]
+	workers = 0
