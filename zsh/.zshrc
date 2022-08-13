@@ -1,7 +1,8 @@
 # geometry configuration
 GEOMETRY_STATUS_SYMBOL_COLOR_HASH=true
 
-GEOMETRY_RPROMPT+=(geometry_virtualenv geometry_exec_time geometry_jobs geometry_git)
+# Not adding geometry_git as it is too slow on monorepo
+GEOMETRY_RPROMPT+=(geometry_virtualenv geometry_exec_time geometry_jobs)
 GEOMETRY_INFO=()
 
 zstyle :compinstall filename '$ZDOTDIR/.zshrc'
@@ -44,9 +45,6 @@ source $ZDOTDIR/plugins/fast-syntax-highlighting/F-Sy-H.plugin.zsh
 foreach file ($ZDOTDIR/rc/*.zsh)
   source $file
 end
-
-# source /usr/share/fzf/key-bindings.zsh
-# source /usr/share/fzf/completion.zsh
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 

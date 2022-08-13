@@ -2,8 +2,7 @@
 # plugins, and themes.
 
 # Basic utils
-alias ls='ls --color=auto'
-alias diff='diff --color=auto'
+alias ls='ls --color=auto -h'
 alias grep='grep --color=auto'
 
 # Changing/making/removing directory
@@ -18,3 +17,8 @@ alias -g .....='cd ../../../..'
 alias -g ......='cd ../../../../..'
 
 alias dev="cd $HOME/work/"
+
+alias ibrew='arch -x86_64 /usr/local/bin/brew'
+
+# M1 stuff
+alias native="CANVA_NIXPKGS_SYSTEM=aarch64-darwin"
