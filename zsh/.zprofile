@@ -23,7 +23,15 @@ path=($path[@] $(go env GOPATH)/bin)
 # `python3`, `python3-config`, `pip3` etc.,
 path=($path[@] /opt/homebrew/opt/python@3.9/libexec/bin)
 
+# Add libpq to path
+path=($path[@] /opt/homebrew/opt/libpq/bin)
+export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+
 eval "$(ssh-agent -s)" > /dev/null
 
 # add direnv
 eval "$(direnv hook $SHELL)"
+
+# add cargo
+. "$HOME/.cargo/env"

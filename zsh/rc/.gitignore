@@ -1,0 +1,2 @@
+# do not check in aliases with sensitive information
+/private-aliases.zsh

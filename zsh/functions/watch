@@ -1,0 +1,6 @@
+while :;
+  do
+  clear
+  ${@:2}
+  sleep $1
+done

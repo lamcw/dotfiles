@@ -10,11 +10,7 @@ vim.cmd([[
 require('plugins')
 
 vim.o.termguicolors = true
--- Switch syntax highlighting on, when the terminal has colors
-if (tonumber(vim.bo.t_Co) > 2 or vim.fn.has('gui_running')) and
-    not vim.fn.exists('syntax_on') then
-  vim.cmd('syntax on')
-end
+vim.cmd('syntax on')
 
 -- use F2 to toggle paste mode
 vim.o.pastetoggle='<F2>'

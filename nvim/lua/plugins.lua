@@ -23,7 +23,7 @@ return require('packer').startup(function()
 
   use {
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+    requires = { 'hrsh7th/cmp-nvim-lsp' },
     event = 'InsertEnter *',
     config = [[require('config.cmp')]]
   }
