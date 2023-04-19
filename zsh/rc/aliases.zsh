@@ -18,7 +18,4 @@ alias -g ......='cd ../../../../..'
 
 alias dev="cd $HOME/work/"
 
-alias ibrew='arch -x86_64 /usr/local/bin/brew'
-alias sha256sum="shasum -a 256"
-
 source "${ZDOTDIR}"/rc/private-aliases.zsh
