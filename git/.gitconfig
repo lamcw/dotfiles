@@ -21,7 +21,7 @@
 [diff]
 	tool = vimdiff
 [commit]
-	gpgsign = true
+	# gpgsign = true
 [pull]
 	rebase = true
 [trace2]
